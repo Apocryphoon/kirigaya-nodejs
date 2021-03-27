@@ -4,10 +4,10 @@ const createBar = require('string-progressbar');
 
 module.exports = {
     info: {
-        name: "teste",
-        description: "teste",
-        usage: "teste",
-        aliases: ["t"],
+        name: "move",
+        description: "move",
+        usage: "move",
+        aliases: ["m","move","mov"],
     },
 
     run: async function (client, message, args)
