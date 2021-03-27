@@ -6,7 +6,7 @@ module.exports = {
     name: "queue",
     description: "Para mostrar a fila de músicas do servidor",
     usage: "",
-    aliases: ["q", "list", "songlist", "song-list"],
+    aliases: ["q", "list", "songlist", "song-list","fila"],
   },
 
   run: async function (client, message, args) {
@@ -82,9 +82,9 @@ function generateQueueEmbed(message, queue) {
     .setColor("BLUE")
     .setDescription(`${info}`)
     .addField("Tocando agora", `[${queue[0].title}](${queue[0].url})`, true)
-    .addField("Canal de Texto", serverQueue.textChannel, true)
+    .addField("Canal de Textoㅤ", serverQueue.textChannel + "ㅤ", true)
     .addField("Canal de Voz", serverQueue.voiceChannel, true)
-    .setFooter("Atualmente o volume do servidor é "+serverQueue.volume)
+    .setFooter("Atualmente o volume do servidor é:ㅤ"+serverQueue.volume)
      if(serverQueue.songs.length === 1)embed.setDescription(`Nenhuma música para tocar a seguir adicionar músicas de \`\`${message.client.config.prefix}play <song_name>\`\``)
 
     embeds.push(embed);
