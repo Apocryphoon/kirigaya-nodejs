@@ -168,7 +168,7 @@ module.exports = {
             //QUANDO USA LINK A DURAÇÃO VEM EM SEGUNDOS, QUANDO USA ESCRITA VEM EM MINUTO EX 3:30
             var size = 20;
             let total = song.duration;//170 add 20?
-            let cr = total % size;
+            let cr = total % 100;
             var slide = "🔵";
             var line = "▬";
 
@@ -267,7 +267,7 @@ module.exports = {
                             //     text: `Solicitado por : ${song.req.tag}`,
                             // }
                         }});
-                    }, 1000)
+                    }, 1200)
                 })
         }
           
