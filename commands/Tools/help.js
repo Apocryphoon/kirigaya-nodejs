@@ -46,7 +46,7 @@ run: async (client, message, args) =>
         .setAuthor("Kirigaya 者","https://i.imgur.com/LwLJ33j.png")
         .setTitle(`**Comandos**`)
         .setThumbnail('https://i.imgur.com/U7Ccrdf.png')
-        .setDescription(`Atualmente tenho ` + `\`20\`` + ' comandos\n' +
+        .setDescription(`Atualmente tenho ` + `\`37\`` + ' comandos\n' +
                         `\n**Categorias**\n` +                        
                         `<:1_:746046713877233816> **Música**\n` +
                         `<:2_:746046725386534962> **Diversão**\n` +
