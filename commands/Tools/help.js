@@ -76,10 +76,10 @@ run: async (client, message, args) =>
         var back = await msg.react(`746084292047929374`)
     
     
-        var c = msg.createReactionCollector((r, u) => r.me && u.id == message.author.id)
-        c.on("collect", async r => 
+        var c = msg.createReactionCollector((reaction, user) => reaction.emoji.id && user.id == message.author.id)
+        c.on("collect", async reaction => 
         {
-            switch(r.emoji.id) 
+            switch(reaction.emoji.id) 
             {
                 case `746046713877233816` ://1
 
@@ -90,8 +90,21 @@ run: async (client, message, args) =>
                 .setTitle(`<:1_:746046713877233816>** **|** Música**`)
                 .setThumbnail('https://i.imgur.com/e35NThp.png')
                 .setDescription(                       
-                `\n<:arrowbluerigth:746071610267533424> **ki!play <nome/url> -** Toca determinada musica.\n` +
-                `<:arrowbluerigth:746071610267533424> **ki!parar -** Para a música tocando no momento.\n`)
+                `\n<:arrowbluerigth:746071610267533424> **ki!play <nome/url> -** Toca determinada música.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!parar -** Para a música tocando no momento.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!volume <numero> -** Contra o volume da música.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!letra -** Se disponivel, mostra a letra da música.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!loop -** Para ativar/desativar a repetição.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!pause -** Para pausar a música.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!playlist <nome/url> -** Para tocar uma playlist .\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!procurar -** Parar pesquisar uma música.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!fila -** Para ver as músicas na fila.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!resume -** Para retomar a música pausada.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!sair -** Para fazer o Kirigaya sair da sala de voz.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!aleatorio -** Para ativar o modo aleatório.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!pular -** Pula a música atual.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!saltar <numero> -** Pula para uma música específica.\n` +
+                `<:arrowbluerigth:746071610267533424> **ki!tocando -** Mostra a música tocando no momento.\n`)
                 .setFooter('Reaja ao emote referente à categoria | Kirigaya 者')
 
                 await msg.edit(emojia)
@@ -124,9 +137,10 @@ run: async (client, message, args) =>
                 .setAuthor("Kirigaya 者","https://i.imgur.com/LwLJ33j.png")
                 .setTitle(`<:3_:746046737084448990>** **|** Interação**`)
                 .setDescription(                       
-                  `\n<:arrowbluerigth:746071610267533424> **ki!steam <jogo> -** Retorna informações sobre o jogo na **steam**.\n` +
-                  `<:arrowbluerigth:746071610267533424> **ki!emoji <nome-do-emoji> -** Retorna determinado emoji animado ou não.\n` +
-                  `<:arrowbluerigth:746071610267533424> **ki!ascii <msg> -** Cria um **ascii* usando a <msg>.\n`)
+                  `\n<:arrowbluerigth:746071610267533424> **ki!ascii <msg> -** Cria um **ascii* usando a <msg>.\n` +
+                  `<:arrowbluerigth:746071610267533424> **ki!avatar -** Mostra o avatar de determinado usúario.\n` +
+                  `<:arrowbluerigth:746071610267533424> **ki!move <membro> -** Faz o <membro> dar um passeio pelo servidor.\n` +
+                  `<:arrowbluerigth:746071610267533424> **ki!emoji <nome-do-emoji> -** Retorna determinado emoji animado ou não.`)
                 .setFooter('Reaja ao emote referente à categoria | Kirigaya 者')                
 
                 await msg.edit(emojia)
@@ -144,7 +158,7 @@ run: async (client, message, args) =>
                 .setThumbnail('https://i.imgur.com/8rszmT3.png')
                 .setDescription(                      
                   `\n<:arrowbluerigth:746071610267533424> **ki!ping -** Retorna sua conexão com o discord.\n` +
-                  `<:arrowbluerigth:746071610267533424> **ki!avatar -** Mostra o avatar de determinado usúario.\n` +
+                  `<:arrowbluerigth:746071610267533424> **ki!invite -** Recebe o invite para usar o bot em seu servidor` +
                   `<:arrowbluerigth:746071610267533424> **ki!limpar <2-100> -** Apaga mensagens na sala atual.\n`)
                 .setFooter('Reaja ao emote referente à categoria | Kirigaya 者')                   
 
@@ -162,6 +176,7 @@ run: async (client, message, args) =>
                 .setThumbnail('https://i.imgur.com/kp3WQFI.png')
                 .setDescription(
                   `\n<:arrowbluerigth:746071610267533424> **ki!ban <usúario> -** Bane um determinado usúario do servidor.\n` +
+                  `<:arrowbluerigth:746071610267533424> **ki!reload <comando> -** Atualiza determinado comando` +
                   `<:arrowbluerigth:746071610267533424> **ki!anuncio <sala><msg> -** Faz um anuncio.\n`)
                 .setFooter('Reaja ao emote referente à categoria | Kirigaya 者')   
 
@@ -179,6 +194,7 @@ run: async (client, message, args) =>
                 .setThumbnail('https://i.imgur.com/pheTqH6.png')
                 .setDescription(
                   `\n<:arrowbluerigth:746071610267533424> **ki!userinfo <usúario> -** Retorna informações do usúario.\n` +
+                  `<:arrowbluerigth:746071610267533424> **ki!steam <jogo> -** Retorna informações sobre o jogo na **steam**` +
                   `<:arrowbluerigth:746071610267533424> **ki!infoserver -** Retorna informações do servidor.\n` +
                   `<:arrowbluerigth:746071610267533424> **ki!discord -** Retorna informações sobre o discord\n`)
                 .setFooter('Reaja ao emote referente à categoria | Kirigaya 者')   
@@ -212,5 +228,4 @@ run: async (client, message, args) =>
             }
         });
     }   
-}
-}
+}}
