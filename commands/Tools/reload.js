@@ -11,7 +11,7 @@ module.exports = {
     let user = message.author;
     var discordtag = "20cm sem uso#8776"
 
-    if (user.id !== 'SEU ID') {
+    if (user.id !== '512059480779915274') {
       return message.channel.send("Desculpa, esse comando é direcionado ao desenvolvedor, caso tenha algum problema entre em contato: ``"+discordtag+"``.");
     }
     
