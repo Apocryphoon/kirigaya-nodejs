@@ -137,7 +137,7 @@ run: async (client, message, args) =>
                 .setAuthor("Kirigaya 者","https://i.imgur.com/LwLJ33j.png")
                 .setTitle(`<:3_:746046737084448990>** **|** Interação**`)
                 .setDescription(                       
-                  `\n<:arrowbluerigth:746071610267533424> **ki!ascii <msg> -** Cria um **ascii* usando a <msg>.\n` +
+                  `\n<:arrowbluerigth:746071610267533424> **ki!ascii <msg> -** Cria um **ascii** usando a <msg>.\n` +
                   `<:arrowbluerigth:746071610267533424> **ki!avatar -** Mostra o avatar de determinado usúario.\n` +
                   `<:arrowbluerigth:746071610267533424> **ki!move <membro> -** Faz o <membro> dar um passeio pelo servidor.\n` +
                   `<:arrowbluerigth:746071610267533424> **ki!emoji <nome-do-emoji> -** Retorna determinado emoji animado ou não.`)
@@ -158,7 +158,7 @@ run: async (client, message, args) =>
                 .setThumbnail('https://i.imgur.com/8rszmT3.png')
                 .setDescription(                      
                   `\n<:arrowbluerigth:746071610267533424> **ki!ping -** Retorna sua conexão com o discord.\n` +
-                  `<:arrowbluerigth:746071610267533424> **ki!invite -** Recebe o invite para usar o bot em seu servidor` +
+                  `<:arrowbluerigth:746071610267533424> **ki!invite -** Recebe o invite para usar o bot em seu servidor.\n` +
                   `<:arrowbluerigth:746071610267533424> **ki!limpar <2-100> -** Apaga mensagens na sala atual.\n`)
                 .setFooter('Reaja ao emote referente à categoria | Kirigaya 者')                   
 
@@ -176,7 +176,7 @@ run: async (client, message, args) =>
                 .setThumbnail('https://i.imgur.com/kp3WQFI.png')
                 .setDescription(
                   `\n<:arrowbluerigth:746071610267533424> **ki!ban <usúario> -** Bane um determinado usúario do servidor.\n` +
-                  `<:arrowbluerigth:746071610267533424> **ki!reload <comando> -** Atualiza determinado comando` +
+                  `<:arrowbluerigth:746071610267533424> **ki!reload <comando> -** Atualiza determinado comando.\n` +
                   `<:arrowbluerigth:746071610267533424> **ki!anuncio <sala><msg> -** Faz um anuncio.\n`)
                 .setFooter('Reaja ao emote referente à categoria | Kirigaya 者')   
 
