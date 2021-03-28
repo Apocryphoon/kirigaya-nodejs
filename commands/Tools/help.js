@@ -3,10 +3,10 @@ const moment = require('moment')
 
 module.exports = {
   info: {
-    name: "ajuda",
+    name: "help",
     description: "Mostra todos os comandos do kirigaya",
     usage: "",
-    aliases: ["help"],
+    aliases: ["ajuda"],
   },
 
 run: async (client, message, args) => 
