@@ -9,9 +9,10 @@ module.exports = {
     run : (client, message, args) => 
     {
     let user = message.author;
+    var discordtag = "20cm sem uso#8776"
 
     if (user.id !== 'SEU ID') {
-      return message.channel.send("Desculpa, esse comando é direcionado aos desenvolvedores.");
+      return message.channel.send("Desculpa, esse comando é direcionado ao desenvolvedor, caso tenha algum problema entre em contato: ``"+discordtag+"``.");
     }
     
     if (args.length === 0) return message.channel.send("Use: `ki!reload <command>`");
