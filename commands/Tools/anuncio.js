@@ -3,7 +3,7 @@ const discord = require("discord.js");
 module.exports = {
     info: {
         name: "anuncio",
-        description: "Faz um anuncio emm uma sala discord",
+        description: "Faz um anuncio em uma sala discord", //fiz uma aleteração ortograrfica em "anuncio em(m) sua sala.., tirei o M em volta dos colchetes"
         usage: "",
         aliases: ["alerta"],
     },

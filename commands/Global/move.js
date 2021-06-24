@@ -21,7 +21,7 @@ module.exports = {
         let msg = args.join(" "); 
 
         if(msg > 5 || msg < 0) return message.channel.send('O valor minimo é 1 e o valor maximo é 4');
-        let final = msg * 1000;
+        //let final = msg * 1000;
 
         const channelAtual = message.member.voice.channel.id;
         const channels = message.guild.channels.cache.filter(channel => channel.type == "voice")
@@ -29,7 +29,7 @@ module.exports = {
         //console.log(channelAtual);
 
         for (const channel of channels.array())//
-        {     
+        {      
             member.voice.setChannel(channel.id);
             console.log(`Membro: ` + member.user.username + `, acaba de ser movido para a sala: ` + channel.name);
             //message.channel.send(`Membro: ` + `\*\*${member.user.username}\*\*` + `, acaba de ser movido para a sala: ` + `\*\*${channel.name}\*\*`);
