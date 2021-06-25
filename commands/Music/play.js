@@ -121,8 +121,6 @@ module.exports = {
         const play = async (song) => {
             const queue = message.client.queue.get(message.guild.id);
             if (!song) {
-                sendError(
-                );
                 message.client.queue.delete(message.guild.id);
                 return;
             }
@@ -166,33 +164,27 @@ module.exports = {
             });
 
             //QUANDO USA LINK A DURAÇÃO VEM EM SEGUNDOS, QUANDO USA ESCRITA VEM EM MINUTO EX 3:30
-            var size = 20;
-            let total = song.duration;//170 add 20?
-            let cr = total % 100;
-            var slide = "🔵";
-            var line = "▬";
+            global.size = 20;
+            global.total = song.duration;//170 add 20?
+            global.cr = total % 100;
+            global.slide = "🔵";
+            global.line = "▬";
 
-            console.log(total);
-            let value = createBar(total, cr++, size, line, slide);//cr++
+            //let value = createBar(total, cr++, size, line, slide);//cr++
             
             var frase = song.title;//frase com o nome da musica
             var frase_array = frase.split(' ');//separa a musica por (" ") e salva em um array
 
             for(var i = 0; i < frase_array.length; i++) 
             {
-                console.log(frase_array[i])
+                //PRINTA A MUSICA NO CONSOLE
+                //console.log(frase_array[i])
 
                 if(frase_array[i] != undefined)
                 {
                     frase_array[i] = frase_array[i].replace(/^\s*/, "").replace(/\s*$/, "");
                 }                
             }
-
-            //             var vetor = ["A", "B", "C", "D", "E"];
-            // var elementosRemovidos = vetor.splice(1, 2); // Remove o segundo e terceiro elementos do vetor.
-
-            // console.log(elementosRemovidos); // ["B", "C"]
-            // console.log(vetor); // ["A", "D", "E"]
 
             dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
@@ -205,7 +197,7 @@ module.exports = {
                 },
                 {
                     name: `ㅤ`,
-                    value: `<a:discozinho:745141833633366077> | **[**` +value[0]+`**]**`,
+                    value: `<a:discozinho:745141833633366077> | **[**` +createBar.splitBar(total, cr++, size, line, slide)[0]+`**]**`,
                     inline: false,                        
                 },
                 {
@@ -229,7 +221,7 @@ module.exports = {
             }}).then(m => {
                     var int = setInterval(() => 
                     {
-                        let value = createBar(total, cr++, size, line, slide);
+                        //let value = createBar(total, cr++, size, line, slide);
                         
                         if (total < cr || !song) 
                         {
@@ -245,7 +237,7 @@ module.exports = {
                 },
                 {
                     name: `ㅤ`,
-                    value: `<a:discozinho:745141833633366077> | **[**` +value[0]+`**]**`,
+                    value: `<a:discozinho:745141833633366077> | **[**` +createBar.splitBar(total, cr++, size, line, slide)[0]+`**]**`,
                     inline: false,                        
                 },
                 {
