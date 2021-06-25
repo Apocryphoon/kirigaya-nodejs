@@ -14,7 +14,8 @@ module.exports = {
         usage: "<YouTube_URL> | <song_name>",
         aliases: ["p", "tocar"],
     },
-
+    
+    //teste
     run: async function (client, message, args) {
         let channel = message.member.voice.channel;
         if (!channel) return sendError("Sinto muito, mas você precisa estar em um canal de voz para tocar música!", message.channel);
