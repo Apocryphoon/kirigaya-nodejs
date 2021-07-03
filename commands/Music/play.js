@@ -6,6 +6,7 @@ const ytdlDiscord = require("ytdl-core-discord");
 const yts = require("yt-search");
 const fs = require("fs");
 const sendError = require("../../util/error");
+const sendWebhook = require("../../util/webhook")
 const scdl = require("soundcloud-downloader").default;
 module.exports = {
     info: {
@@ -79,7 +80,7 @@ module.exports = {
                     views: String(songInfo.views).padStart(10, " "),
                     url: songInfo.url,
                     ago: songInfo.ago,
-                    test: songInfo.seconds,//valor em segundos da musica
+                    //test: songInfo.playing,//valor em segundos da musica .seconds
                     seg: songInfo.duration.toString(),//valor + segundos
                     duration: songInfo.seconds,//duration.timestamp,//valor em segundo e minutos
                     img: songInfo.image,
@@ -167,11 +168,12 @@ module.exports = {
             //QUANDO USA LINK A DURAÇÃO VEM EM SEGUNDOS, QUANDO USA ESCRITA VEM EM MINUTO EX 3:30
             global.size = 20;
             global.total = song.duration;//170 add 20?
-            global.cr = total % 100;
+            global.cr = total / 22;//%100
             global.slide = "🔵";
             global.line = "▬";
 
             //let value = createBar(total, cr++, size, line, slide);//cr++
+            //sendWebhook("VEIO DO COMANDO PLAY");
             
             var frase = song.title;//frase com o nome da musica
             var frase_array = frase.split(' ');//separa a musica por (" ") e salva em um array
@@ -216,50 +218,43 @@ module.exports = {
                     value: song.req.tag,
                     inline: true
                 }],
-                // footer: {
-                //     text: `Solicitado por : ${song.req.tag}`,
-                // }
             }}).then(m => {
                     var int = setInterval(() => 
-                    {
-                        //let value = createBar(total, cr++, size, line, slide);
-                        
-                        if (total < cr || !song) 
-                        {
-                            console.log("ENTROU NO IF");
-                            clearInterval(int);
-                        }
+                    {                        
                         m.edit({embed: {
                             color: "#00fff7",
-                fields: [{
-                    name: `<a:checkout:745851470947024936> |ㅤTocando:`,//+ frase_array[0] + " " + frase_array[1] + " " + frase_array[2] + " " + frase_array[3] + " " +frase_array[4] + " " +frase_array[5]+ " " +frase_array[6],
-                    value: `${song.title}`,//
-                    inline: false,
-                },
-                {
-                    name: `ㅤ`,
-                    value: `<a:discozinho:745141833633366077> | **[**` +createBar.splitBar(total, cr++, size, line, slide)[0]+`**]**`,
-                    inline: false,                        
-                },
-                {
-                    name: "Duraçãoㅤ",
-                    value: "[" + song.duration + "] Segㅤ",
-                    inline: true,                        
-                },
-                {
-                    name: `Lançado emㅤ` ,
-                    value: song.ago + `ㅤ`,
-                    inline: true
-                },
-                {
-                    name: `Solicitado por` ,
-                    value: song.req.tag,
-                    inline: true
-                }],
-                            // footer: {
-                            //     text: `Solicitado por : ${song.req.tag}`,
-                            // }
+                            fields: [{
+                                name: `<a:checkout:745851470947024936> |ㅤTocando:`,//+ frase_array[0] + " " + frase_array[1] + " " + frase_array[2] + " " + frase_array[3] + " " +frase_array[4] + " " +frase_array[5]+ " " +frase_array[6],
+                                value: `${song.title}`,//
+                                inline: false,
+                            },
+                            {
+                                name: `ㅤ`,
+                                value: `<a:discozinho:745141833633366077> | **[**` +createBar.splitBar(total, cr++, size, line, slide)[0]+`**]**`,
+                                inline: false,                        
+                            },
+                            {
+                                name: "Duraçãoㅤ",
+                                value: "[" + song.duration + "] Segㅤ",
+                                inline: true,                        
+                            },
+                            {
+                                name: `Lançado emㅤ` ,
+                                value: song.ago + `ㅤ`,
+                                inline: true
+                            },
+                            {
+                                name: `Solicitado por` ,
+                                value: song.req.tag,
+                                inline: true
+                            }],
                         }});
+                        if (cr > total || !song) 
+                        {
+                            console.log("MUSICA ACABOU!");
+                            console.log("O percurso total foi de: ", cr)
+                            clearInterval(int);
+                        }
                     }, 1200)
                 })
         }
