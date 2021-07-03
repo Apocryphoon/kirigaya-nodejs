@@ -1,3 +1,5 @@
+const webhook = require('../util/webhook');
+
 module.exports = async client => {   
   //client.on("ready", () => {
     const status = [
@@ -12,9 +14,11 @@ module.exports = async client => {
         const selected = status[Math.floor(Math.random() * status.length)];
         
         client.user.setActivity(selected).catch(err => console.log(err))
-      }, 5000)
-    //}
-  //);
-    console.log(`O bot ${client.user.tag} teve sucesso ao iniciar!`); // Envia uma mensagem no terminal assim que o bot estiver conectado
-    console.log(`${client.user.tag} iniciado com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais e em ${client.guilds.cache.size} servidores`)
+      }, 5000);
+      
+    console.log(`O bot ${client.user.tag} teve sucesso ao iniciar!`);
+    webhook(`O bot ${client.user.tag} teve sucesso ao iniciar!`);
+
+    console.log(`${client.user.tag} iniciado com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais e em ${client.guilds.cache.size} servidores`);
+    webhook(`${client.user.tag} iniciado com ${client.users.cache.size} usuários, em ${client.channels.cache.size} canais e em ${client.guilds.cache.size} servidores`);
 };
