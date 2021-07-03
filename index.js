@@ -39,8 +39,7 @@ const load = dirs =>
 {
     const commands = fs.readdir(`./commands/${dirs}/`, (err, files) => 
     {
-        if (err) return console.error(err);
-    
+      try {
         files.forEach((file) => 
         {
           if (!file.endsWith(".js")) return;
@@ -48,8 +47,12 @@ const load = dirs =>
           let commandName = file.split(".")[0];
 
           client.commands.set(commandName, props);
-          console.log("Loading Command: "+commandName)
+          console.log("[+] Comando carregado com sucesso: "+commandName);
         });
+      } catch (error) {
+        console.log("[-] Comando carregado sem sucesso: "+commandName)
+        webhook(`[-] Comando carregado sem sucesso`);
+      }
     });
 }
 ["Global", "Miscellaneous", "Music", "Tools"].forEach(x => load(x));
